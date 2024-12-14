@@ -39,13 +39,12 @@ export default function Home() {
         {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            Crafting Digital
+           Modern Strategies. 
             <br />
-            <span className="text-blue-500">Experiences</span>
+            <span className="text-blue-500">Proven Results.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            We're a global creative agency that combines design thinking with technology
-            to transform businesses for the digital age.
+            Specializing in podcast marketing and digital partnerships for athletes, creators, and emerging brands.
           </p>
           <div className="flex items-center justify-center gap-4">
             <Button size="lg" className="bg-blue-500 hover:bg-blue-600">
@@ -59,7 +58,7 @@ export default function Home() {
         </div>
       </section>
       
-      bg-muted/50
+      
 
       {/* Services Section */}
 <section id="services" className="py-24 bg-muted/50">
