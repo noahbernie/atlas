@@ -33,6 +33,14 @@ export default function Home() {
     router.push(fullUrl); // Navigate to the full URL
   };
 
+  const navigateToMedia = () => {
+    // Get the current origin (base URL)
+    const currentOrigin = window.location.origin;
+    // Construct the full URL with '/contact'
+    const fullUrl = `${currentOrigin}${pathname}/media`;
+    router.push(fullUrl); // Navigate to the full URL
+  };
+
 
   return (
     <main className="min-h-screen pt-16">
@@ -68,7 +76,7 @@ export default function Home() {
               Start a Project
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" onClick={navigateToMedia}>
               View Our Work
             </Button>
           </div>
