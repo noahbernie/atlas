@@ -8,7 +8,6 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import logo from '@/images/atlaslogo.png';
 
-
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
@@ -54,10 +53,32 @@ export function Header() {
               </Link>
             ))}
             
+            {/* Social Media Links */}
             <div className="flex items-center space-x-4">
-              <Twitter className="h-5 w-5 cursor-pointer hover:text-primary" />
-              <Instagram className="h-5 w-5 cursor-pointer hover:text-primary" />
-              <Linkedin className="h-5 w-5 cursor-pointer hover:text-primary" />
+              <Link
+                href="https://twitter.com/atls_agency" // Replace with your X profile URL
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5 cursor-pointer hover:text-primary" />
+              </Link>
+              <Link
+                href="https://instagram.com/atlsagency" // Replace with your Instagram profile URL
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5 cursor-pointer hover:text-primary" />
+              </Link>
+              <Link
+                href="https://linkedin.com/company/atls-agency/" // Replace with your LinkedIn profile URL
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5 cursor-pointer hover:text-primary" />
+              </Link>
             </div>
           </div>
 
@@ -90,9 +111,30 @@ export function Header() {
                 </Link>
               ))}
               <div className="flex items-center space-x-4 px-3 py-2">
-                <Twitter className="h-5 w-5" />
-                <Instagram className="h-5 w-5" />
-                <Linkedin className="h-5 w-5" />
+                <Link
+                  href="https://twitter.com/atls_agency"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="h-5 w-5 hover:text-primary" />
+                </Link>
+                <Link
+                  href="https://instagram.com/atlsagency"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-5 w-5 hover:text-primary" />
+                </Link>
+                <Link
+                  href="https://linkedin.com/company/atls-agency/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5 hover:text-primary" />
+                </Link>
               </div>
             </div>
           </div>
