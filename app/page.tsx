@@ -1,8 +1,12 @@
+'use client';
+
 import Image from 'next/image';
 import { CircularPattern } from '@/components/features/CircularPattern';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Mail, Phone, MapPin } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import atlsbg from '@/images/atlsbg3.jpg';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -16,7 +20,20 @@ const clients = [
   { id: 6, image: 'https://i.postimg.cc/kBNzjHS4/Gametime-Partners.png' },
 ];
 
+
 export default function Home() {
+  const pathname = usePathname(); // Get the current path
+  const router = useRouter(); // Use router for navigation
+
+  const navigateToContact = () => {
+    // Get the current origin (base URL)
+    const currentOrigin = window.location.origin;
+    // Construct the full URL with '/contact'
+    const fullUrl = `${currentOrigin}${pathname}/contact`;
+    router.push(fullUrl); // Navigate to the full URL
+  };
+
+
   return (
     <main className="min-h-screen pt-16">
       {/* Hero Section */}
@@ -47,7 +64,7 @@ export default function Home() {
             Specializing in podcast marketing and digital partnerships for athletes, creators, and emerging brands.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600">
+            <Button size="lg" className="bg-blue-500 hover:bg-blue-600" onClick={navigateToContact}>
               Start a Project
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -57,7 +74,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
       
 
       {/* Services Section */}

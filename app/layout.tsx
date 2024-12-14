@@ -7,7 +7,7 @@ import { TimeZoneDisplay } from '@/components/features/TimeZoneDisplay';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Modern Agency',
+  title: 'ATLS Agency',
   description: 'A global creative agency delivering exceptional digital experiences',
 };
 
