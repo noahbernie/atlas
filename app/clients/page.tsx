@@ -1,6 +1,6 @@
 'use client';
 
-import { BannerCarousel } from '@/components/features/BannerCarousel';
+import { useState, useEffect } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -11,9 +11,10 @@ import {
 import Image from 'next/image';
 
 const bannerImages = [
-  'https://picsum.photos/1920/1080?random=1',
-  'https://picsum.photos/1920/1080?random=2',
-  'https://picsum.photos/1920/1080?random=3',
+  'https://i.postimg.cc/dtvWKXxt/2510-Baner.jpg',
+  'https://i.postimg.cc/RZJJpCL3/Amonra-banner.jpg',
+  'https://i.postimg.cc/7LT1zMWW/Jorge-Banner.jpg',
+  'https://i.postimg.cc/Kzf131xW/Melvin-Banner.webp',
 ];
 
 const clients = [
@@ -44,10 +45,62 @@ const brands = [
 ];
 
 export default function ClientsPage() {
-  return (
-    <main className="min-h-screen pt-16">
-      <BannerCarousel title="Our Clients" images={bannerImages} />
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval); // Clean up on unmount
+  }, []);
+
+  return (
+    <main className="min-h-screen pt-16 bg-black text-white">
+      {/* Hero Banner Carousel */}
+      <section className="relative">
+        <div className="relative w-full h-[600px] overflow-hidden">
+          {/* Rotating Banner Carousel */}
+          {bannerImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <Image
+                src={image}
+                alt={`Banner ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+          {/* Overlay Content */}
+          <div className="absolute inset-0 flex flex-col justify-end items-start px-8 md:px-16 lg:px-8 pb-12 md:pb-16 lg:pb-24">
+            <h1 className="text-8xl font-extrabold uppercase leading-none">
+              ATLS
+            </h1>
+            <span className="text-5xl font-bold tracking-wide mt-2 uppercase">
+              Athletes
+            </span>
+            {/* Geometric Shape */}
+            <div className="absolute right-8 bottom-8 transform rotate-12">
+              <svg
+                width="300"
+                height="300"
+                viewBox="0 0 300 300"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="opacity-70 stroke-cyan-500"
+              >
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Success Stories */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">Client Success Stories</h2>
@@ -76,6 +129,7 @@ export default function ClientsPage() {
         </div>
       </section>
 
+      {/* Brand Elevation */}
       <section className="py-24 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">Brand Elevation</h2>
@@ -98,6 +152,7 @@ export default function ClientsPage() {
         </div>
       </section>
 
+      {/* Trusted By Leading Brands */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">Trusted By Leading Brands</h2>
