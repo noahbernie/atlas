@@ -11,7 +11,7 @@ import {
 import Image from 'next/image';
 
 const bannerImages = [
-  'https://i.postimg.cc/dtvWKXxt/2510-Baner.jpg',
+  'https://i.postimg.cc/d3zwhFkX/DJAC-Shady.jpg',
   'https://i.postimg.cc/RZJJpCL3/Amonra-banner.jpg',
   'https://i.postimg.cc/7LT1zMWW/Jorge-Banner.jpg',
   'https://i.postimg.cc/Kzf131xW/Melvin-Banner.webp',
