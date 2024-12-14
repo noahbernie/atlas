@@ -12,12 +12,12 @@ import { useRouter } from 'next/navigation';
 
 
 const clients = [
-  { id: 1, image: 'https://i.postimg.cc/KKWHkS69/Gran-Partners.png' },
+  { id: 1, image: 'https://i.postimg.cc/KYXxGmSg/Gran-Coramino.png' },
   { id: 2, image: 'https://i.postimg.cc/yDV52ThT/Door-Dash-Partners.png' },
   { id: 3, image: 'https://i.postimg.cc/5XnGJFnW/DKPartners.png' },
   { id: 4, image: 'https://i.postimg.cc/Y40PCqsG/Venmo-Partners.png' },
   { id: 5, image: 'https://i.postimg.cc/4mRjQGmq/Locker-Partners.png' },
-  { id: 6, image: 'https://i.postimg.cc/kBNzjHS4/Gametime-Partners.png' },
+  { id: 6, image: 'https://i.postimg.cc/3rLhyXQh/Gametime.png' },
 ];
 
 
@@ -154,7 +154,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-gray-400" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+1 (310) 292-9492</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-gray-400" />
