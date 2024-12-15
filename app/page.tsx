@@ -97,40 +97,85 @@ export default function Home() {
 
 
 </section>
+{/* About Section */}
+<section id="about" className="py-24 bg-white">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8">
+    {/* Left Side - Video */}
+    <div className="relative w-full max-w-[500px] ml-0"> {/* Increased width */}
+      <div className="relative aspect-[4/5] overflow-hidden shadow-md"> {/* Removed rounded-lg */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="object-cover w-full h-full"
+        >
+          <source src="/REEL.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    {/* Right Side - Text */}
+    <div className="text-left">
+      <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-gray-900 leading-tight">
+        About ATLS
+      </h2>
+      <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+        ATLS Sports Agency, inspired by the enduring strength of Atlas, is a premier representation and marketing agency specializing in elevating athletes, creators, and emerging brands. We pride ourselves on delivering innovative, tailor-made strategies that maximize opportunities on and off the field. With a 360° approach, ATLS combines creativity, strategic partnerships, and results-driven execution to amplify our clients’ careers. Our commitment to excellence, attention to detail, and relentless work ethic set us apart as we continuously push boundaries and redefine success for those we represent.
+      </p>
+    </div>
+  </div>
+</section>
+
 
 
       
 
       {/* Services Section */}
-<section id="services" className="py-24 bg-muted/50">
+<section id="services" className="py-24 bg-black text-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex items-center gap-2 mb-4">
-      <Sparkles className="h-5 w-5 text-primary text-blue-500 " />
-      <h2 className="text-3xl font-bold">Our Services</h2>
-    </div>
-    <div className="grid md:grid-cols-3 gap-8 mt-12">
+    {/* Section Title */}
+    <div className="text-center mb-16">
+  <Image
+    src="/services.png" // Update with the correct path to your image
+    alt="Our Services"
+    width={600} // Adjust the width as needed
+    height={150} // Adjust the height as needed
+    className="mx-auto"
+    />
+  </div>
+
+
+    {/* Services Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {[
-        { name: 'Content Marketing', description: 'We create tailored, engaging content that resonates with fans and consumers, strengthening both athlete and brand presence.' },
-        { name: 'Brand Elevation', description: 'We elevate an athlete’s or brand’s identity by enhancing visibility, expanding their market reach, and building a premium brand image.' },
-        { name: 'Business Advisory', description: 'Our advisory services guide athletes and brands on how to grow their businesses off the field.' },
-        { name: 'Post-Career', description: 'We help athletes plan for life after sports by providing strategic guidance on career transitions, investment opportunities, and new ventures.' },
-        { name: 'Social Media Strategy', description: 'We create and implement tailored social media strategies that amplify engagement, grow online audiences, and enhance public image.' },
-        { name: 'NIL Representation', description: ' We navigate the complexities of NIL deals, helping athletes maximize their earning potential while staying compliant with current regulations.' },
-        { name: 'Contract Negotiation', description: 'Our team of experienced negotiators uses a strategic, data-driven approach to secure the best possible terms, ensuring their financial and professional interests are prioritized.' },
-        { name: 'Public Relations & Earned Media', description: 'We ensure athletes and brands gain favorable media attention, increasing their visibility and credibility.' },
-        { name: 'Creative Design Production', description: 'We offer creative design production services that include everything from branding and logo design to multimedia content production.' },
-
-
-
-      ].map((service) => (
-        <div key={service.name} className="bg-card p-6 rounded-lg border">
-          <h3 className="text-xl font-semibold mb-4">{service.name}</h3>
-          <p className="text-muted-foreground">{service.description}</p>
+        { name: 'Player Development', icon: '📋' },
+        { name: 'NIL Representation', icon: '🤝' },
+        { name: 'NBA WNBA NCAA Certified', icon: '✅' },
+        { name: 'Brand Elevation', icon: '📢' },
+        { name: 'Public Relations Earned Media', icon: '📰' },
+        { name: 'Social Media Strategy', icon: '📱' },
+        { name: 'Post-Career', icon: '🔄' },
+        { name: 'Impact Community Philanthropy', icon: '🌍' },
+        { name: 'Creative Design Production', icon: '🎨' },
+      ].map((service, index) => (
+        <div
+          key={index}
+          className="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-md shadow-lg"
+        >
+          {/* Icon */}
+          <div className="text-5xl mb-4 text-teal-400">{service.icon}</div>
+          {/* Title */}
+          <h3 className="text-lg font-bold text-white uppercase text-center mb-2">
+            {service.name}
+          </h3>
         </div>
       ))}
     </div>
   </div>
 </section>
+
 
 
       {/* Clients Section */}
