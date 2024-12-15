@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import {
   Carousel,
   CarouselContent,
@@ -54,6 +55,31 @@ export default function ClientsPage() {
 
     return () => clearInterval(interval); // Clean up on unmount
   }, []);
+
+  const [isOpen, setIsOpen] = useState(false);
+    const [scrolling, setScrolling] = useState(false);
+    const pathname = usePathname();
+  
+    const navigation = [
+      { name: 'Home', href: '/' },
+      { name: 'Clients', href: '/clients' },
+      { name: 'Media', href: '/media' },
+      { name: 'Contact', href: '/contact' },
+    ];
+  
+    useEffect(() => {
+      // Event listener for scrolling
+      const handleScroll = () => {
+        if (window.scrollY > 50) {
+          setScrolling(true);
+        } else {
+          setScrolling(false);
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
   return (
     <main className="min-h-screen pt-16 bg-black text-white">

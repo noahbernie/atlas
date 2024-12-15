@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles, Mail, Phone, MapPin } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import atlsbg from '@/images/atlsbg3.jpg';
 import { useRouter } from 'next/navigation';
+import { Header } from '@/components/layout/Header';
 
 
 
@@ -43,45 +44,61 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen pt-16">
+    <main className="min-h-screen pt-0">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={atlsbg}
-            alt="Background"
-            fill
-            className="object-cover opacity-120"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background" />
-        </div>
-        
-        {/* Circular Pattern */}
-        <CircularPattern />
-        
-        {/* Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-           Modern Strategies. 
-            <br />
-            <span className="text-blue-500">Proven Results.</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Specializing in podcast marketing and digital partnerships for athletes, creators, and emerging brands.
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600" onClick={navigateToContact}>
-              Start a Project
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button size="lg" variant="outline" onClick={navigateToMedia}>
-              View Our Work
-            </Button>
-          </div>
-        </div>
-      </section>
+      <section className="relative h-screen flex items-end overflow-hidden">
+  {/* Background Video */}
+  <div className="absolute inset-0 z-0">
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="absolute inset-0 w-full h-full object-cover"
+    >
+      <source src="/DJAC-High-Quality-VEED.mp4" type="video/mp4" />
+    </video>
+    <div className="absolute inset-0 bg-black/50" /> {/* Dark overlay */}
+  </div>
+
+  {/* Content - Moved to Bottom */}
+  <div className="relative z-10 text-left px-8 sm:px-12 md:px-16 lg:px-16 pb-8 sm:pb-8 md:pb-8">
+  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+      ATLS<br />
+      <span className="block text-white">SPORTS AGENCY</span>
+    </h1>
+  </div>
+
+  {/* Optional Design Lines */}
+  <div className="absolute inset-0 z-10 pointer-events-none">
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 1920 1080"
+      preserveAspectRatio="none"
+      className="w-full h-full"
+    >
+      <line
+        x1="1200"
+        y1="0"
+        x2="1920"
+        y2="600"
+        stroke="#00CFFF"
+        strokeWidth="2"
+      />
+      <line
+        x1="800"
+        y1="0"
+        x2="1920"
+        y2="800"
+        stroke="#00CFFF"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</section>
+
+
       
 
       {/* Services Section */}
