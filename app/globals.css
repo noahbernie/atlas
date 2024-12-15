@@ -25,6 +25,18 @@
   --radius: 0.5rem;
 }
 
+/* Subtle Fade-In Effect for Grid Lines */
+.pointer-events-none svg line,
+.pointer-events-none svg path {
+  opacity: 0;
+  transition: opacity 1.5s ease-in;
+}
+
+body:hover .pointer-events-none svg line,
+body:hover .pointer-events-none svg path {
+  opacity: 0.3; /* Subtle appearance when the page is hovered */
+}
+
 @layer base {
   * {
     @apply border-border;

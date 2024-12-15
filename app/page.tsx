@@ -69,33 +69,33 @@ export default function Home() {
     </h1>
   </div>
 
-  {/* Optional Design Lines */}
   <div className="absolute inset-0 z-10 pointer-events-none">
-    <svg
-      width="100%"
-      height="100%"
-      viewBox="0 0 1920 1080"
-      preserveAspectRatio="none"
-      className="w-full h-full"
-    >
-      <line
-        x1="1200"
-        y1="0"
-        x2="1920"
-        y2="600"
-        stroke="#00CFFF"
-        strokeWidth="2"
-      />
-      <line
-        x1="800"
-        y1="0"
-        x2="1920"
-        y2="800"
-        stroke="#00CFFF"
-        strokeWidth="2"
-      />
-    </svg>
-  </div>
+  <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 1920 1080"
+    preserveAspectRatio="none"
+    className="w-full h-full"
+  >
+    {/* Vertical and Horizontal Lines */}
+    <line x1="50%" y1="0" x2="50%" y2="1080" stroke="#00CFFF" strokeWidth="1" />
+    <line x1="0" y1="50%" x2="1920" y2="50%" stroke="#00CFFF" strokeWidth="1" />
+
+    {/* Diagonal Lines */}
+    <line x1="0" y1="0" x2="1920" y2="1080" stroke="#00CFFF" strokeWidth="1" />
+    <line x1="0" y1="1080" x2="1920" y2="0" stroke="#00CFFF" strokeWidth="1" />
+
+    {/* Outer Curves */}
+    <path
+      d="M0,1080 Q960,540 1920,1080"
+      stroke="#00CFFF"
+      strokeWidth="1.5"
+      fill="none"
+    />
+  </svg>
+</div>
+
+
 </section>
 
 
