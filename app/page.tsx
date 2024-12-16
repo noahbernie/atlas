@@ -22,6 +22,7 @@ const clients = [
 ];
 
 
+
 export default function Home() {
   const pathname = usePathname(); // Get the current path
   const router = useRouter(); // Use router for navigation
