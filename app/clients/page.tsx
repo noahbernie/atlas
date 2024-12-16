@@ -10,6 +10,9 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
+import ClientsSection from '@/components/ui/clientsSection';
+import { Instagram, Linkedin, Twitter } from 'lucide-react';
+
 
 const bannerImages = [
   'https://i.postimg.cc/d3zwhFkX/DJAC-Shady.jpg',
@@ -18,23 +21,16 @@ const bannerImages = [
   'https://i.postimg.cc/Kzf131xW/Melvin-Banner.webp',
 ];
 
+
 const clients = [
-  {
-    name: 'Tech Innovators',
-    description: 'Leading technology solutions provider',
-    image: 'https://picsum.photos/400/300?random=4',
-  },
-  {
-    name: 'Creative Studios',
-    description: 'Award-winning creative agency',
-    image: 'https://picsum.photos/400/300?random=5',
-  },
-  {
-    name: 'Global Enterprises',
-    description: 'International business solutions',
-    image: 'https://picsum.photos/400/300?random=6',
-  },
+  { id: 1, image: 'https://i.postimg.cc/KYXxGmSg/Gran-Coramino.png' },
+  { id: 2, image: 'https://i.postimg.cc/yDV52ThT/Door-Dash-Partners.png' },
+  { id: 3, image: 'https://i.postimg.cc/5XnGJFnW/DKPartners.png' },
+  { id: 4, image: 'https://i.postimg.cc/Y40PCqsG/Venmo-Partners.png' },
+  { id: 5, image: 'https://i.postimg.cc/4mRjQGmq/Locker-Partners.png' },
+  { id: 6, image: 'https://i.postimg.cc/3rLhyXQh/Gametime.png' },
 ];
+
 
 const brands = [
   'https://picsum.photos/200/100?random=7',
@@ -67,6 +63,8 @@ export default function ClientsPage() {
       { name: 'Contact', href: '/contact' },
     ];
   
+  
+  
     useEffect(() => {
       // Event listener for scrolling
       const handleScroll = () => {
@@ -81,116 +79,74 @@ export default function ClientsPage() {
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    
   return (
-    <main className="min-h-screen pt-16 bg-black text-white">
+    <main className="min-h-screen pt-0 bg-black text-white">
       {/* Hero Banner Carousel */}
-      <section className="relative">
-        <div className="relative w-full h-[600px] overflow-hidden">
-          {/* Rotating Banner Carousel */}
-          {bannerImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <Image
-                src={image}
-                alt={`Banner ${index + 1}`}
-                fill
-                className="object-cover"
-              />
-            </div>
-          ))}
-          {/* Overlay Content */}
-          <div className="absolute inset-0 flex flex-col justify-end items-start px-8 md:px-16 lg:px-8 pb-12 md:pb-16 lg:pb-24">
-            <h1 className="text-8xl font-extrabold uppercase leading-none">
-              ATLS
-            </h1>
-            <span className="text-5xl font-bold tracking-wide mt-2 uppercase">
-              Athletes
-            </span>
-            {/* Geometric Shape */}
-            <div className="absolute right-8 bottom-8 transform rotate-12">
-              <svg
-                width="300"
-                height="300"
-                viewBox="0 0 300 300"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="opacity-70 stroke-cyan-500"
-              >
-              </svg>
-            </div>
-          </div>
+      <section className="relative h-screen flex items-end overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/DJAC-High-Quality-VEED.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/50" /> {/* Dark overlay */}
         </div>
+
+        {/* Content - Moved to Bottom */}
+        <div className="relative z-10 text-left px-8 sm:px-12 md:px-16 lg:px-16 pb-8 sm:pb-8 md:pb-8">
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+            ATLS<br />
+            <span className="block text-white">ClIENTS</span>
+          </h1>
+        </div>
+
+    
       </section>
 
-      {/* Client Success Stories */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Client Success Stories</h2>
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent>
-              {clients.map((client) => (
-                <CarouselItem key={client.name}>
-                  <div className="p-4">
-                    <div className="relative aspect-video overflow-hidden rounded-lg">
-                      <Image
-                        src={client.image}
-                        alt={client.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <h3 className="text-xl font-semibold mt-4">{client.name}</h3>
-                    <p className="text-muted-foreground">{client.description}</p>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
-      </section>
+      
 
-      {/* Brand Elevation */}
-      <section className="py-24 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Brand Elevation</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Transform Your Brand</h3>
-              <p className="text-muted-foreground">
-                We help businesses elevate their brand presence through strategic
-                marketing and creative solutions that drive results.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Measurable Impact</h3>
-              <p className="text-muted-foreground">
-                Our data-driven approach ensures your brand reaches its full
-                potential with measurable results and sustainable growth.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section className="py-10 bg-black text-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+      {/* Section Title */}
+      <div className="text-center mb-20">
+        <Image
+          src="/Clients.png" // Correct path to your services header image
+          alt="Our Services"
+          width={600}
+          height={150}
+          className="mx-auto"
+        />
+      </div>
+    <div className="relative flex items-center justify-center w-full h-[500px]">
 
-      {/* Trusted By Leading Brands */}
-      <section className="py-24">
+    <ClientsSection />
+    </div>
+  </div>
+</section>
+
+      
+
+      {/* Clients Section */}
+      <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Trusted By Leading Brands</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            Trusted by Industry Leaders
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {brands.map((brand, index) => (
+            {clients.map((client) => (
               <div
-                key={index}
+                key={client.id}
                 className="relative aspect-[2/1] grayscale hover:grayscale-0 transition-all"
               >
                 <Image
-                  src={brand}
-                  alt={`Brand ${index + 1}`}
+                  src={client.image}
+                  alt={`Client ${client.id}`}
                   fill
                   className="object-contain"
                 />
@@ -199,6 +155,59 @@ export default function ClientsPage() {
           </div>
         </div>
       </section>
+
+      <footer className="w-full bg-black text-white py-12">
+  <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-8">
+    {/* Logo */}
+    <div>
+      <img
+        src="/atlaslogo.png" // Replace with the ATLS logo path
+        alt="ATLS Sports Agency"
+        className="h-12"
+      />
+    </div>
+
+    {/* Social Media Icons */}
+    <div className="flex items-center space-x-6">
+      <a
+        href="https://twitter.com/atls_agency"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Twitter"
+        className="hover:text-blue-400 transition-colors duration-300"
+      >
+        <Twitter className="h-6 w-6 text-gray-400 hover:text-white" />
+      </a>
+      <a
+        href="https://instagram.com/atlsagency"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className="hover:text-pink-500 transition-colors duration-300"
+      >
+        <Instagram className="h-6 w-6 text-gray-400 hover:text-white"/>
+          
+      </a>
+      <a
+        href="https://linkedin.com/company/atls-agency"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        className="hover:text-blue-600 transition-colors duration-300"
+      >
+        <Linkedin className="h-6 w-6 text-gray-400 hover:text-white" />
+      </a>
+    </div>
+
+
+    {/* Copyright */}
+    <div>
+      <p className="text-sm text-gray-400 text-center">
+        2024 © ATLS SPORTS AGENCY
+      </p>
+    </div>
+  </div>
+</footer>
     </main>
   );
 }
