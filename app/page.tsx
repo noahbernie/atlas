@@ -3,12 +3,12 @@
 import Image from 'next/image';
 import { CircularPattern } from '@/components/features/CircularPattern';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowRight, Sparkles, Mail, Phone, MapPin, Link } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import atlsbg from '@/images/atlsbg3.jpg';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
-
+import { Menu, X, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 
 
@@ -26,11 +26,11 @@ export default function Home() {
   const pathname = usePathname(); // Get the current path
   const router = useRouter(); // Use router for navigation
 
-  const navigateToContact = () => {
+  const navigateToClients = () => {
     // Get the current origin (base URL)
     const currentOrigin = window.location.origin;
     // Construct the full URL with '/contact'
-    const fullUrl = `${currentOrigin}${pathname}/contact`;
+    const fullUrl = `${currentOrigin}${pathname}/clients`;
     router.push(fullUrl); // Navigate to the full URL
   };
 
@@ -132,88 +132,141 @@ export default function Home() {
 
       
 
-      {/* Services Section */}
-<section id="services" className="py-24 bg-black text-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+{/* Services Section */}
+<section id="services" className="py-24 bg-black">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
     {/* Section Title */}
-    <div className="text-center mb-16">
-  <Image
-    src="/services.png" // Update with the correct path to your image
-    alt="Our Services"
-    width={600} // Adjust the width as needed
-    height={150} // Adjust the height as needed
-    className="mx-auto"
-    />
-  </div>
-
+    <div className="text-center mb-12">
+      <Image
+        src="/services.png" // Correct path to your services header image
+        alt="Our Services"
+        width={600}
+        height={150}
+        className="mx-auto"
+      />
+    </div>
 
     {/* Services Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        { name: 'Player Development', icon: '📋' },
-        { name: 'NIL Representation', icon: '🤝' },
-        { name: 'NBA WNBA NCAA Certified', icon: '✅' },
-        { name: 'Brand Elevation', icon: '📢' },
-        { name: 'Public Relations Earned Media', icon: '📰' },
-        { name: 'Social Media Strategy', icon: '📱' },
-        { name: 'Post-Career', icon: '🔄' },
-        { name: 'Impact Community Philanthropy', icon: '🌍' },
-        { name: 'Creative Design Production', icon: '🎨' },
-      ].map((service, index) => (
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+  {[
+    { name: 'Content Marketing', icon: '/icons/content.png' },
+    { name: 'Brand Elevation', icon: '/icons/brand.png' },
+    { name: 'NIL Representation', icon: '/icons/NIL.png' },
+    { name: 'Business Advisory', icon: '/icons/business.png' },
+    { name: 'Post-Career', icon: '/icons/post.png' },
+    { name: 'Social Media Strategy', icon: '/icons/sm.png' },
+    { name: 'Creative Design Production', icon: '/icons/Creative.png' },
+    { name: 'Public Relations Earned Media', icon: '/icons/pr.png' },
+    { name: 'Impact Community Philanthropy', icon: '/icons/community.png' },
+    { name: 'Contract Negotiation', icon: '/icons/contract.png' },
+  ].map((service, index) => (
+    <div
+      key={index}
+      className={`flex flex-col items-center justify-center aspect-square bg-[#121212] shadow-lg 
+        opacity-0 animate-fadeIn`}
+      style={{ animationDelay: `${index * 200}ms` }} // Inline style for delay
+    >
+      {/* Icon */}
+      <img
+        src={service.icon}
+        alt={service.name}
+        className="h-16 w-16 mb-4"
+      />
+      {/* Title */}
+      <h3 className="text-base md:text-lg font-bold text-white uppercase text-center leading-tight break-words w-[90%]">
+        {service.name}
+      </h3>
+    </div>
+  ))}
+</div>
+
+
+
+  </div>
+</section>
+{/* Clients Section */}
+<section className="py-24 bg-black">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-3xl font-bold text-center mb-12 text-white">
+      Trusted by Industry Leaders
+    </h2>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+      {clients.map((client) => (
         <div
-          key={index}
-          className="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-md shadow-lg"
+          key={client.id}
+          className="relative aspect-[2/1] grayscale hover:grayscale-0 transition-all"
         >
-          {/* Icon */}
-          <div className="text-5xl mb-4 text-teal-400">{service.icon}</div>
-          {/* Title */}
-          <h3 className="text-lg font-bold text-white uppercase text-center mb-2">
-            {service.name}
-          </h3>
+          <Image
+            src={client.image}
+            alt={`Client ${client.id}`}
+            fill
+            className="object-contain"
+          />
         </div>
       ))}
     </div>
   </div>
 </section>
 
+<section className="grid grid-cols-1 md:grid-cols-2 w-full h-[700px]">
+  {/* Left Section: Clients */}
+  <div className="relative group">
+    <img
+      src="/clients.webp" // Replace with the correct image path
+      alt="ATLS Clients"
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300"></div>
+    <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+      <h2 className="text-4xl md:text-6xl font-bold uppercase leading-tight">
+        <span>ATLS</span> <br />
+        <span>Clients</span>
+      </h2>
+      <button
+        onClick={navigateToClients}
+        className="mt-6 px-6 py-2 border-2 border-white text-white font-medium uppercase hover:bg-white hover:text-black transition-all duration-300"
+      >
+        Learn More
+      </button>
+    </div>
+  </div>
 
+  {/* Right Section: Media */}
+  <div className="relative group">
+    <img
+      src="/media.jpeg" // Replace with the correct image path
+      alt="ATLS Media"
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300"></div>
+    <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+      <h2 className="text-4xl md:text-6xl font-bold uppercase leading-tight">
+        <span>ATLS</span> <br />
+        <span>Media</span>
+      </h2>
+      <button
+        onClick={navigateToMedia}
+        className="mt-6 px-6 py-2 border-2 border-white text-white font-medium uppercase hover:bg-white hover:text-black transition-all duration-300"
+      >
+        Learn More
+      </button>
+    </div>
+  </div>
+</section>
 
-      {/* Clients Section */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Trusted by Industry Leaders</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {clients.map((client) => (
-              <div
-                key={client.id}
-                className="relative aspect-[2/1] grayscale hover:grayscale-0 transition-all"
-              >
-                <Image
-                  src={client.image}
-                  alt={`Client ${client.id}`}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      <section className="py-24  bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">General Inquiries</h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Have a question or want to learn more about our services? We'd love to hear from you.
-                Reach out to our team for any general inquiries.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                  <span>info@atlsagency.com</span>
-                </div>
+<section className="w-full grid grid-cols-1 lg:grid-cols-2 h-[700px]">
+  {/* Left Section: Contact Information */}
+  <div className="bg-black text-white flex flex-col justify-center px-8 md:px-16">
+  <div className="border-t border-gray-600 pt-4 mb-8">
+      <h2 className="text-2xl font-bold mb-2">General Inquiries</h2>
+      <p className="text-gray-400">info@atlsagency.com</p>
+    </div>
+    {/* Media Inquiries */}
+    <div className="border-t border-gray-600 pt-4 mb-8">
+     
+    </div>
+    {/* Locations */}
+    <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-gray-400" />
                   <span>+1 (310) 292-9492</span>
@@ -223,18 +276,73 @@ export default function Home() {
                   <span>Los Angeles, CA</span>
                 </div>
               </div>
-            </div>
-            <div className="relative aspect-square">
-              <Image
-                src={"https://i.postimg.cc/4xJ3GR8B/LA-skyline.png"}
+
+   
+  </div>
+
+
+  {/* Right Section: Image */}
+  <div className="relative w-full h-full">
+    <img
+      src={"https://i.postimg.cc/4xJ3GR8B/LA-skyline.png"}
                 alt="Office"
-                fill
-                className="object-cover rounded-lg opacity-60"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      className="w-full h-full object-cover"
+    />
+  </div>
+</section>
+<footer className="w-full bg-black text-white py-12">
+  <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-8">
+    {/* Logo */}
+    <div>
+      <img
+        src="/atlaslogo.png" // Replace with the ATLS logo path
+        alt="ATLS Sports Agency"
+        className="h-12"
+      />
+    </div>
+
+    {/* Social Media Icons */}
+    <div className="flex items-center space-x-6">
+      <a
+        href="https://twitter.com/atls_agency"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Twitter"
+        className="hover:text-blue-400 transition-colors duration-300"
+      >
+        <Twitter className="h-6 w-6 text-gray-400 hover:text-white" />
+      </a>
+      <a
+        href="https://instagram.com/atlsagency"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className="hover:text-pink-500 transition-colors duration-300"
+      >
+        <Instagram className="h-6 w-6 text-gray-400 hover:text-white" />
+      </a>
+      <a
+        href="https://linkedin.com/company/atls-agency"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        className="hover:text-blue-600 transition-colors duration-300"
+      >
+        <Linkedin className="h-6 w-6 text-gray-400 hover:text-white" />
+      </a>
+    </div>
+
+
+    {/* Copyright */}
+    <div>
+      <p className="text-sm text-gray-400 text-center">
+        2024 © ATLS SPORTS AGENCY
+      </p>
+    </div>
+  </div>
+</footer>
+
+             
 
     </main>
   );
